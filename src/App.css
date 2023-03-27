@@ -1,38 +1,114 @@
-.App {
-  text-align: center;
+:root {
+  --color-text: #31456A;
+  --color-border: #FFFFFF;
+  --color-accent: #069DB7;
+  --color-accent-light: #CDEBF1;
+  --color-primary-button: #069DB7;
+  --color-editor-controls: #31456A;
+  --bg-card: #F9F9F9;
+  --bg-card-menu: #FFFFFF;
+  --bg-common: #F2F2F2;
+  --bg-slider-dot: #FFFFFF;
+  --bg-primary-button: #F9F9F9;
+  --bg-modal-overlay: rgba(255, 255, 255, 0.5);
+  --box-shadow-common: 5px 5px 16px rgba(136, 165, 191, 0.25)
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--color-text);
+  background-color: var(--bg-common);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.container {
+  width: 60%;
+  margin: 1em auto;
+}
+.ql-toolbar {
+
+  position: absolute;
+  top: 3em;
+  right: 400px;
+  padding: 2em;
+  box-shadow: var(--box-shadow-common);
+  background-color: var(--bg-card);
+  border-radius: 10px;
+  font-size: 12px;
+  font-family: times new roman;
+  font-weight: bold;
+  z-index: 1000;
+  width: 400px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.ql-editor { 
+  font-family: times new roman;
+
+  font-size: 2em;
+}
+
+.file-name-section{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.file-name-input{
+  font-size: 2.5em;
+  background-color: var(--bg-common);
+  border: none;
+  font-family: inherit;
+  opacity: 0.4;
+}
+.file-name-input:focus{
+  outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.ql-container.ql-snow{
+  border: none;
+  margin-top: 5em;
+
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+.ql-toolbar.ql-snow {
+  border: none;
+  font-family: 'Times New Roman', Times, serif;
+  color: var(--color-editor-controls);
+}
+.ql-snow .ql-picker {
+  color: var(--color-editor-controls);
+  font-weight: 700;
+}
+
+.ql-snow.ql-toolbar .ql-picker-label:hover{
+  stroke: var(--color-accent);
+  color: var(--color-accent);
+}
+.ql-snow .ql-stroke{
+  stroke: var(--color-editor-controls);
+
+}
+.ql-snow.ql-toolbar button.ql-active .ql-stroke{
+  stroke: var(--color-accent);
+  color: var(--color-accent);
+
+}
+
+.ql-snow.ql-toolbar button:hover .ql-stroke {
+  stroke: var(--color-editor-controls);
+
+}
+.file-save-button {
+  background-color: var(--bg-card);
+  border: none;
+  width: 3em;
+  height: 3em;
+  border-radius: 50%;
+  margin: 1em;
+  font-size: 100%;
+  color: var(--color-primary-button);
+}
+
+.file-save-button .fa-arrow-left {
+  color: var(--color-text);
+  opacity: 0.4;
+
 }
