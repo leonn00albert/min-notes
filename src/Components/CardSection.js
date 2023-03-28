@@ -1,10 +1,11 @@
 import { Card } from "./Card"
 
-export const CardSection = () => {
+export const CardSection = ({notes}) => {
     return (
+        
         <div className="card-section">
-                 <Card />
-                 <Card />
+                {notes.map(note =>  <Card note={note} />)}
+                
          </div>
            
       
