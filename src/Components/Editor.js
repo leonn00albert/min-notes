@@ -1,10 +1,10 @@
 import { TextEditor } from "./TextEditor"
 import { Toolbar } from "./ToolBar"
 
-export function Editor() {
+export function Editor({handleShow}) {
     return (
         <div className="editor container">
-            <Toolbar />
+            <Toolbar handleShow={handleShow}/>
             <TextEditor />
         </div>
     )

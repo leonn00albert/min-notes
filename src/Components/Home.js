@@ -1,9 +1,13 @@
+import { CardSection } from "./CardSection";
+import { SearchBar } from "./SearchBar";
 import { SettingsBar } from "./SettingsBar";
 
-export const Home = () => {
+export const Home = ({handleShow}) => {
     return (
-        <div>
-            <SettingsBar />
+        <div className="home container">
+            <SettingsBar handleShow={handleShow} />
+            <SearchBar />
+            <CardSection /> 
         </div>
     );
 }
