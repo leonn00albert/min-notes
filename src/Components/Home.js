@@ -12,7 +12,7 @@ export const Home = ({handleShow, notes}) => {
         <div className="home container">
             <SettingsBar handleShow={handleShow} />
             <SearchBar value={search}  handleChange={handleSearch} />
-            <CardSection search={search} notes={notes} /> 
+            <CardSection   search={search} notes={notes} /> 
         </div>
     );
 }

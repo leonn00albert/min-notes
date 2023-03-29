@@ -27,8 +27,10 @@ function App() {
 
   const createNote = (title,content)=>{ 
     let id = Object.values(localStorage).length;
-    localStorage.setItem("note_" + id, JSON.stringify(new Note(title, content))) 
+    localStorage.setItem("note_" + id, JSON.stringify(new Note(title, content, "note_" + id))) 
   }
+
+
 
 
   function render() {
