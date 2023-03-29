@@ -27,11 +27,11 @@ export const CardSection = ({search}) => {
             let locals = Object.values(localStorage).map(note => JSON.parse(note))
             locals.sort((a, b) => {
                 if (a.isPinned && !b.isPinned) {
-                  return -1; // a should come before b
+                  return -1;
                 } else if (!a.isPinned && b.isPinned) {
-                  return 1; // b should come before a
+                  return 1; 
                 } else {
-                  return 0; // leave a and b in their current order
+                  return 0; 
                 }
               })
         if(search.length > 2){
@@ -43,7 +43,7 @@ export const CardSection = ({search}) => {
             setNotes(locals);
     
         }
-      },[update])
+      },[update,search])
 
     return (
         

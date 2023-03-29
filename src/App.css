@@ -14,6 +14,10 @@
   --box-shadow-common: 5px 5px 16px rgba(136, 165, 191, 0.25)
 }
 
+/* dark theme */
+
+
+
 
 body {
   font-family: 'Times New Roman', Times, serif;
@@ -105,7 +109,7 @@ body {
 }
 
 .file-save-button {
-  background-color: var(--bg-card);
+  background-color: var(--bg-primary-button);
   border: none;
   width: 3em;
   height: 3em;
@@ -274,3 +278,88 @@ body {
   background-color: var(--color-accent-light);
 
 }
+
+.drop-down.setting {
+  display: inline;
+}
+.flipswitch {
+  position: relative;
+  width: 39px;
+}
+.flipswitch input[type=checkbox] {
+  display: none;
+}
+.flipswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid #999999;
+  border-radius: 22px;
+}
+.flipswitch-inner {
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+.flipswitch-inner:before, .flipswitch-inner:after {
+  float: left;
+  width: 50%;
+  height: 12px;
+  padding: 0;
+  line-height: 12px;
+  font-size: 18px;
+  color: white;
+  font-family: Trebuchet, Arial, sans-serif;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+.flipswitch-inner:before {
+  content: "";
+  padding-left: 12px;
+  background-color: var(--color-primary-button);
+  color: #FFFFFF;
+}
+.flipswitch-inner:after {
+  content: "";
+  padding-right: 12px;
+  background-color: #EBEBEB;
+  color:  var(--bg-common);
+  text-align: right;
+}
+.flipswitch-switch {
+  width: 19px;
+  margin: -3.5px;
+  background: #FFFFFF;
+  border: 1px solid #999999;
+  border-radius: 22px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 24px;
+  transition: all 0.3s ease-in 0s;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-inner {
+  margin-left: 0;
+}
+.flipswitch-cb:checked + .flipswitch-label .flipswitch-switch {
+  right: 0;
+}
+
+a.setting {
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+}
+
+a.setting:hover {
+  background-color: transparent;
+
+}
+
+
+.setting span {
+  margin: 0.3em
+
+}
+
