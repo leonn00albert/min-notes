@@ -1,6 +1,6 @@
 import { useRef, useState, useEffect} from "react"
 
-export const Card = ({ note, deleteNote, duplicateNote}) => {
+export const Card = ({ note, deleteNote, duplicateNote, pinNote}) => {
     const [show,setShow] = useState({display: 'none'});
     const dropdownRef = useRef();
     const handleClick = () => {
@@ -9,18 +9,20 @@ export const Card = ({ note, deleteNote, duplicateNote}) => {
         }
 
     }
-
+    const showPin = (isPinned) => {
+        if(isPinned) {
+            return <i className="fa fa-thumb-tack"></i>;
+        }
+        
+    }
+    
     useEffect(() => {
         window.onclick = (event) => {
           if (event.target.contains(dropdownRef.current)
             && event.target !== dropdownRef.current) {     
                 setShow({display: 'none'});
-                console.log(`You clicked outside the box!`);
-
           } 
-          else {     
-            console.log(`You clicked Inside the box!`);
-          }
+     
 
         }
     }, [show]);
@@ -30,9 +32,11 @@ export const Card = ({ note, deleteNote, duplicateNote}) => {
             <div className="card-body">
                 <div className="card-header">
                     <p className="card-date">{new Date(note.date).toDateString()}</p>
-                    <p className="drop-down" onClick={handleClick} > <i className="fa fa-ellipsis-v"></i>
+                    <p className="drop-down" onClick={handleClick} > 
+                     {showPin(note.isPinned)}
+                    <i className="fa fa-ellipsis-v"></i>
                         <div id="myDropdown" className="dropdown-content" style={show} ref={dropdownRef}>
-                            <a href="#">Pin to the top</a>
+                            <a onClick={() =>{setShow({display: 'none'});  pinNote(note)}}>{!note.isPinned ? "Pin to the top" : "Unpin"} </a>
                             <a onClick={() =>{setShow({display: 'none'});  duplicateNote(note)}}>Duplicate</a>
                             <a href="#" onClick={()=> deleteNote(note.id)}>Delete</a>
                         </div>

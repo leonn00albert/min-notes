@@ -16,16 +16,31 @@ export const CardSection = ({search}) => {
         localStorage.setItem(note.id, JSON.stringify(new Note(note.title,note.content,note.id)));
         setUpdate(!update);
       }
+
+      const pinNote  = (note) => {
+        note.isPinned = !note.isPinned;
+        localStorage.setItem(note.id, JSON.stringify(note));
+        setUpdate(!update);
+      }
     
       useEffect(() => {
-
+            let locals = Object.values(localStorage).map(note => JSON.parse(note))
+            locals.sort((a, b) => {
+                if (a.isPinned && !b.isPinned) {
+                  return -1; // a should come before b
+                } else if (!a.isPinned && b.isPinned) {
+                  return 1; // b should come before a
+                } else {
+                  return 0; // leave a and b in their current order
+                }
+              })
         if(search.length > 2){
-            setNotes(Object.values(localStorage).map(note => JSON.parse(note)).filter(note => note.content.toLowerCase().includes(search) || note.title.toLowerCase().includes(search)))
-          
-    
+            setNotes(locals.filter(note => note.content.toLowerCase().includes(search) || note.title.toLowerCase().includes(search)))
+            
+            
         }
         else {
-            setNotes(Object.values(localStorage).map(note => JSON.parse(note)));
+            setNotes(locals);
     
         }
       },[update])
@@ -33,7 +48,7 @@ export const CardSection = ({search}) => {
     return (
         
         <div className="card-section">
-                {notes.map((note, i) =>  <Card duplicateNote={duplicateNote} deleteNote={deleteNote} note={note} key={i} />)}
+                {notes.map((note, i) =>  <Card pinNote={pinNote} duplicateNote={duplicateNote} deleteNote={deleteNote} note={note} key={i} />)}
                 
          </div>
            

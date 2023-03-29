@@ -1,7 +1,8 @@
 const  notePrototype = {
     title : "", 
     content :"",
-    id: ""
+    id: "",
+    isPinned: false
 
 }
 
