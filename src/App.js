@@ -12,10 +12,7 @@ const example = {
 
 function App() {
   const [show, setShow] = useState({ type: "home" });
-  const [notes, setNotes] = useState([]);
   const handleShow = () => {
-    
-    console.log(show.type)
     if (show.type === 'home') {
       setShow(
         { type: "editor" }
@@ -28,17 +25,15 @@ function App() {
     }
   }
 
-  const createNote = (filename, title,content)=>{
-
-    localStorage.setItem("note_" + filename, JSON.stringify(new Note(title, content))) 
+  const createNote = (title,content)=>{ 
+    let id = Object.values(localStorage).length;
+    localStorage.setItem("note_" + id, JSON.stringify(new Note(title, content))) 
   }
 
-  localStorage.setItem('note_',JSON.stringify(example));
-  useEffect(()=> {},[show])
 
   function render() {
     if (show.type === 'home') {
-      return <Home notes={notes} handleShow={handleShow} />;
+      return <Home handleShow={handleShow} />;
     }
 
     if (show.type === 'editor') {
@@ -46,8 +41,7 @@ function App() {
     }
   }
 
-useEffect(()=>{
-setNotes(Object.values(localStorage).map(note => JSON.parse(note)))} ,[])
+
 
 
   return (
